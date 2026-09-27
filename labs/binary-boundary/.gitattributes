@@ -1,0 +1,7 @@
+# These five recorded inputs are byte-hashed in provenance.json.
+# Preserve their original line endings across Git checkouts.
+fixture.c -text whitespace=cr-at-eol
+build-fixture.ps1 -text
+analyze-fixture.ps1 -text whitespace=cr-at-eol
+ExportBoundary.java -text
+test_fixture.py -text whitespace=cr-at-eol

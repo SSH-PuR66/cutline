@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "method": "Native ctypes calls to locally built x64 pure-function DLLs; independent unbounded-integer reference.",
+  "seed": 20260911,
+  "boundary_values": [
+    0,
+    1,
+    2,
+    254,
+    255,
+    256,
+    65535,
+    65536,
+    2147483647,
+    2147483648,
+    4294967294,
+    4294967295
+  ],
+  "random_triples": 20000,
+  "builds": [
+    {
+      "optimization": "O0",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d",
+      "size_bytes": 2048,
+      "boolean_inputs": 256,
+      "legacy_boolean_disagreements": 254,
+      "canonical_boolean_errors": 0,
+      "range_inputs": 21728,
+      "legacy_range_false_accepts": 6855,
+      "legacy_range_false_rejects": 0,
+      "bounded_range_errors": 0,
+      "examples": [
+        {
+          "total": 16,
+          "offset": 4294967295,
+          "count": 2,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 8,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 9,
+          "mathematical": 0,
+          "legacy": 0,
+          "bounded": 0
+        },
+        {
+          "total": 0,
+          "offset": 0,
+          "count": 0,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 4294967295,
+          "offset": 4294967295,
+          "count": 1,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        }
+      ]
+    },
+    {
+      "optimization": "O2",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117",
+      "size_bytes": 2048,
+      "boolean_inputs": 256,
+      "legacy_boolean_disagreements": 254,
+      "canonical_boolean_errors": 0,
+      "range_inputs": 21728,
+      "legacy_range_false_accepts": 6855,
+      "legacy_range_false_rejects": 0,
+      "bounded_range_errors": 0,
+      "examples": [
+        {
+          "total": 16,
+          "offset": 4294967295,
+          "count": 2,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 8,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 9,
+          "mathematical": 0,
+          "legacy": 0,
+          "bounded": 0
+        },
+        {
+          "total": 0,
+          "offset": 0,
+          "count": 0,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 4294967295,
+          "offset": 4294967295,
+          "count": 1,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled fixtures, not a vulnerability claim about a third-party product.",
+    "All 256 byte values are exhausted; the 32-bit triple space is sampled, not exhausted.",
+    "No fixture dereferences input pointers or demonstrates exploitation."
+  ]
+}

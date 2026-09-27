@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "ghidra_version": "12.1.3",
+  "program": "fixture-O0.dll",
+  "language": "x86:LE:64:default",
+  "compiler_spec": "clangwindows",
+  "binary_sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d",
+  "method": "Headless import and auto-analysis; default inferred types; no prototype or symbol corrections supplied.",
+  "functions": [
+    {
+      "name": "legacy_boolean",
+      "entry": "180001000",
+      "decompiled_c": "\r\nbool legacy_boolean(char param_1)\r\n\r\n{\r\n                    /* 0x1000  3  legacy_boolean */\r\n  return param_1 !\u003d \u0027\\0\u0027;\r\n}\r\n\r\n",
+      "instruction_count": 9,
+      "blocks": [
+        {
+          "start": "180001000",
+          "instructions": [
+            {
+              "address": "180001000",
+              "text": "PUSH RAX",
+              "bytes": "50"
+            },
+            {
+              "address": "180001001",
+              "text": "MOV byte ptr [RSP + 0x7],CL",
+              "bytes": "88 4c 24 07"
+            },
+            {
+              "address": "180001005",
+              "text": "MOVZX EAX,byte ptr [RSP + 0x7]",
+              "bytes": "0f b6 44 24 07"
+            },
+            {
+              "address": "18000100a",
+              "text": "CMP EAX,0x0",
+              "bytes": "83 f8 00"
+            },
+            {
+              "address": "18000100d",
+              "text": "SETNZ AL",
+              "bytes": "0f 95 c0"
+            },
+            {
+              "address": "180001010",
+              "text": "AND AL,0x1",
+              "bytes": "24 01"
+            },
+            {
+              "address": "180001012",
+              "text": "MOVZX EAX,AL",
+              "bytes": "0f b6 c0"
+            },
+            {
+              "address": "180001015",
+              "text": "POP RCX",
+              "bytes": "59"
+            },
+            {
+              "address": "180001016",
+              "text": "RET",
+              "bytes": "c3"
+            }
+          ],
+          "edges": []
+        }
+      ]
+    },
+    {
+      "name": "canonical_boolean",
+      "entry": "180001020",
+      "decompiled_c": "\r\nuint canonical_boolean(byte param_1)\r\n\r\n{\r\n  uint uVar1;\r\n  \r\n                    /* 0x1020  2  canonical_boolean */\r\n  if (param_1 \u003c 2) {\r\n    uVar1 \u003d (uint)param_1;\r\n  }\r\n  else {\r\n    uVar1 \u003d 0xffffffff;\r\n  }\r\n  return uVar1;\r\n}\r\n\r\n",
+      "instruction_count": 14,
+      "blocks": [
+        {
+          "start": "180001020",
+          "instructions": [
+            {
+              "address": "180001020",
+              "text": "PUSH RAX",
+              "bytes": "50"
+            },
+            {
+              "address": "180001021",
+              "text": "MOV byte ptr [RSP + 0x7],CL",
+              "bytes": "88 4c 24 07"
+            },
+            {
+              "address": "180001025",
+              "text": "MOVZX EAX,byte ptr [RSP + 0x7]",
+              "bytes": "0f b6 44 24 07"
+            },
+            {
+              "address": "18000102a",
+              "text": "CMP EAX,0x1",
+              "bytes": "83 f8 01"
+            },
+            {
+              "address": "18000102d",
+              "text": "JG 0x180001039",
+              "bytes": "7f 0a"
+            }
+          ],
+          "edges": [
+            {
+              "to": "180001039",
+              "kind": "CONDITIONAL_JUMP"
+            },
+            {
+              "to": "18000102f",
+              "kind": "FALL_THROUGH"
+            }
+          ]
+        },
+        {
+          "start": "18000102f",
+          "instructions": [
+            {
+              "address": "18000102f",
+              "text": "MOVZX EAX,byte ptr [RSP + 0x7]",
+              "bytes": "0f b6 44 24 07"
+            },
+            {
+              "address": "180001034",
+              "text": "MOV dword ptr [RSP],EAX",
+              "bytes": "89 04 24"
+            },
+            {
+              "address": "180001037",
+              "text": "JMP 0x180001043",
+              "bytes": "eb 0a"
+            }
+          ],
+          "edges": [
+            {
+              "to": "180001043",
+              "kind": "UNCONDITIONAL_JUMP"
+            }
+          ]
+        },
+        {
+          "start": "180001039",
+          "instructions": [
+            {
+              "address": "180001039",
+              "text": "MOV EAX,0xffffffff",
+              "bytes": "b8 ff ff ff ff"
+            },
+            {
+              "address": "18000103e",
+              "text": "MOV dword ptr [RSP],EAX",
+              "bytes": "89 04 24"
+            },
+            {
+              "address": "180001041",
+              "text": "JMP 0x180001043",
+              "bytes": "eb 00"
+            }
+          ],
+          "edges": [
+            {
+              "to": "180001043",
+              "kind": "UNCONDITIONAL_JUMP"
+            }
+          ]
+        },
+        {
+          "start": "180001043",
+          "instructions": [
+            {
+              "address": "180001043",
+              "text": "MOV EAX,dword ptr [RSP]",
+              "bytes": "8b 04 24"
+            },
+            {
+              "address": "180001046",
+              "text": "POP RCX",
+              "bytes": "59"
+            },
+            {
+              "address": "180001047",
+              "text": "RET",
+              "bytes": "c3"
+            }
+          ],
+          "edges": []
+        }
+      ]
+    },
+    {
+      "name": "legacy_range",
+      "entry": "180001050",
+      "decompiled_c": "\r\nbool legacy_range(uint param_1,int param_2,int param_3)\r\n\r\n{\r\n                    /* 0x1050  4  legacy_range */\r\n  return (uint)(param_2 + param_3) \u003c\u003d param_1;\r\n}\r\n\r\n",
+      "instruction_count": 12,
+      "blocks": [
+        {
+          "start": "180001050",
+          "instructions": [
+            {
+              "address": "180001050",
+              "text": "SUB RSP,0x10",
+              "bytes": "48 83 ec 10"
+            },
+            {
+              "address": "180001054",
+              "text": "MOV dword ptr [RSP + 0xc],R8D",
+              "bytes": "44 89 44 24 0c"
+            },
+            {
+              "address": "180001059",
+              "text": "MOV dword ptr [RSP + 0x8],EDX",
+              "bytes": "89 54 24 08"
+            },
+            {
+              "address": "18000105d",
+              "text": "MOV dword ptr [RSP + 0x4],ECX",
+              "bytes": "89 4c 24 04"
+            },
+            {
+              "address": "180001061",
+              "text": "MOV EAX,dword ptr [RSP + 0x8]",
+              "bytes": "8b 44 24 08"
+            },
+            {
+              "address": "180001065",
+              "text": "ADD EAX,dword ptr [RSP + 0xc]",
+              "bytes": "03 44 24 0c"
+            },
+            {
+              "address": "180001069",
+              "text": "CMP EAX,dword ptr [RSP + 0x4]",
+              "bytes": "3b 44 24 04"
+            },
+            {
+              "address": "18000106d",
+              "text": "SETBE AL",
+              "bytes": "0f 96 c0"
+            },
+            {
+              "address": "180001070",
+              "text": "AND AL,0x1",
+              "bytes": "24 01"
+            },
+            {
+              "address": "180001072",
+              "text": "MOVZX EAX,AL",
+              "bytes": "0f b6 c0"
+            },
+            {
+              "address": "180001075",
+              "text": "ADD RSP,0x10",
+              "bytes": "48 83 c4 10"
+            },
+            {
+              "address": "180001079",
+              "text": "RET",
+              "bytes": "c3"
+            }
+          ],
+          "edges": []
+        }
+      ]
+    },
+    {
+      "name": "bounded_range",
+      "entry": "180001080",
+      "decompiled_c": "\r\nbool bounded_range(uint param_1,uint param_2,uint param_3)\r\n\r\n{\r\n  bool local_d;\r\n  \r\n                    /* 0x1080  1  bounded_range */\r\n  local_d \u003d param_2 \u003c\u003d param_1 \u0026\u0026 param_3 \u003c\u003d param_1 - param_2;\r\n  return local_d;\r\n}\r\n\r\n",
+      "instruction_count": 20,
+      "blocks": [
+        {
+          "start": "180001080",
+          "instructions": [
+            {
+              "address": "180001080",
+              "text": "SUB RSP,0x10",
+              "bytes": "48 83 ec 10"
+            },
+            {
+              "address": "180001084",
+              "text": "MOV dword ptr [RSP + 0xc],R8D",
+              "bytes": "44 89 44 24 0c"
+            },
+            {
+              "address": "180001089",
+              "text": "MOV dword ptr [RSP + 0x8],EDX",
+              "bytes": "89 54 24 08"
+            },
+            {
+              "address": "18000108d",
+              "text": "MOV dword ptr [RSP + 0x4],ECX",
+              "bytes": "89 4c 24 04"
+            },
+            {
+              "address": "180001091",
+              "text": "MOV ECX,dword ptr [RSP + 0x8]",
+              "bytes": "8b 4c 24 08"
+            },
+            {
+              "address": "180001095",
+              "text": "XOR EAX,EAX",
+              "bytes": "31 c0"
+            },
+            {
+              "address": "180001097",
+              "text": "CMP ECX,dword ptr [RSP + 0x4]",
+              "bytes": "3b 4c 24 04"
+            },
+            {
+              "address": "18000109b",
+              "text": "MOV byte ptr [RSP + 0x3],AL",
+              "bytes": "88 44 24 03"
+            },
+            {
+              "address": "18000109f",
+              "text": "JA 0x1800010b6",
+              "bytes": "77 15"
+            }
+          ],
+          "edges": [
+            {
+              "to": "1800010b6",
+              "kind": "CONDITIONAL_JUMP"
+            },
+            {
+              "to": "1800010a1",
+              "kind": "FALL_THROUGH"
+            }
+          ]
+        },
+        {
+          "start": "1800010a1",
+          "instructions": [
+            {
+              "address": "1800010a1",
+              "text": "MOV EAX,dword ptr [RSP + 0xc]",
+              "bytes": "8b 44 24 0c"
+            },
+            {
+              "address": "1800010a5",
+              "text": "MOV ECX,dword ptr [RSP + 0x4]",
+              "bytes": "8b 4c 24 04"
+            },
+            {
+              "address": "1800010a9",
+              "text": "SUB ECX,dword ptr [RSP + 0x8]",
+              "bytes": "2b 4c 24 08"
+            },
+            {
+              "address": "1800010ad",
+              "text": "CMP EAX,ECX",
+              "bytes": "39 c8"
+            },
+            {
+              "address": "1800010af",
+              "text": "SETBE AL",
+              "bytes": "0f 96 c0"
+            },
+            {
+              "address": "1800010b2",
+              "text": "MOV byte ptr [RSP + 0x3],AL",
+              "bytes": "88 44 24 03"
+            }
+          ],
+          "edges": [
+            {
+              "to": "1800010b6",
+              "kind": "FALL_THROUGH"
+            }
+          ]
+        },
+        {
+          "start": "1800010b6",
+          "instructions": [
+            {
+              "address": "1800010b6",
+              "text": "MOV AL,byte ptr [RSP + 0x3]",
+              "bytes": "8a 44 24 03"
+            },
+            {
+              "address": "1800010ba",
+              "text": "AND AL,0x1",
+              "bytes": "24 01"
+            },
+            {
+              "address": "1800010bc",
+              "text": "MOVZX EAX,AL",
+              "bytes": "0f b6 c0"
+            },
+            {
+              "address": "1800010bf",
+              "text": "ADD RSP,0x10",
+              "bytes": "48 83 c4 10"
+            },
+            {
+              "address": "1800010c3",
+              "text": "RET",
+              "bytes": "c3"
+            }
+          ],
+          "edges": []
+        }
+      ]
+    }
+  ]
+}

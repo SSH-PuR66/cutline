@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-12T01:26:59.027265+00:00",
+  "ghidra_version": "12.1.3",
+  "ghidra_release": "https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.1.3_build",
+  "ghidra_release_archive_sha256": "93a5d11a9ad510622acaaf908c556a7b9b764d338e78a7567f3689bf5081fd54",
+  "release_checksum_verified": true,
+  "clang_version": "22.1.8 (ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)",
+  "target": "x86_64-pc-windows-msvc",
+  "jdk": "Temurin 25.0.4.1+1-LTS, 64-bit",
+  "flags": [
+    "--target=x86_64-pc-windows-msvc",
+    "-O0 or -O2",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-fno-stack-protector",
+    "-shared",
+    "-nostdlib",
+    "-fuse-ld=lld",
+    "-Wl,/noentry",
+    "-Wl,/timestamp:0",
+    "-Wl,/Brepro",
+    "-Wl,/nodefaultlib"
+  ],
+  "source_sha256": {
+    "fixture.c": "46fffc6d27929a4f0ef55412a3a8639467a28d3c01647c67096c3fcf8069aba9",
+    "build-fixture.ps1": "4c1f58e50a3f5e9c13bf8275220931934cd71bdd8ed5b74d16a0f4957514e058",
+    "analyze-fixture.ps1": "f3dcc0ac024f6c7149b592bd3e9c0d1191fb2e54160055763ed79aa18dde9c78",
+    "ExportBoundary.java": "38190fb0a37f6560c4bcf92d30c600b26869f6d4087deaa34fbb5c679008e416",
+    "test_fixture.py": "3364664e07cc4a96375bcf4d9dc187e51da5a3f8bb288fac728e80a7b49d6696"
+  },
+  "artifacts": [
+    {
+      "optimization": "O0",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d",
+      "size_bytes": 2048
+    },
+    {
+      "optimization": "O2",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117",
+      "size_bytes": 2048
+    }
+  ],
+  "analysis": {
+    "functions_per_build": 4,
+    "type_overrides": false,
+    "names_from": "PE exports",
+    "loaded_external_libraries": 0,
+    "native_imports_observed": 0
+  },
+  "repeated_build_hashes_equal": true,
+  "limits": [
+    "Original controlled fixtures; no third-party vulnerability claim.",
+    "Native regression outputs are recorded; editable browser inputs use equivalent BigInt arithmetic.",
+    "Range tests sample the input domain; the entire 32-bit triple space is not exhausted.",
+    "Recovered C uses inferred types and is not the original source.",
+    "Artifact hashes provide identity and cross-file consistency, not a signed attestation."
+  ]
+}

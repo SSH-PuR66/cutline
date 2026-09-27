@@ -1,0 +1,141 @@
+{
+  "verified_at_utc": "2026-09-27T05:07:51.740511+00:00",
+  "original_experiment_recorded_at_utc": "2026-09-12T01:26:59.027265+00:00",
+  "scope": "Fresh local build, native regression, Ghidra analysis, and record-consistency check; original inert fixtures only.",
+  "toolchain": {
+    "clang": "22.1.8 (ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)",
+    "target": "x86_64-pc-windows-msvc",
+    "python": "3.14.5 x64 interpreter on Windows ARM64",
+    "ghidra": "12.1.3"
+  },
+  "native_results_equal_to_recorded": true,
+  "builds": [
+    {
+      "optimization": "O0",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d",
+      "size_bytes": 2048,
+      "boolean_inputs": 256,
+      "legacy_boolean_disagreements": 254,
+      "canonical_boolean_errors": 0,
+      "range_inputs": 21728,
+      "legacy_range_false_accepts": 6855,
+      "legacy_range_false_rejects": 0,
+      "bounded_range_errors": 0,
+      "examples": [
+        {
+          "total": 16,
+          "offset": 4294967295,
+          "count": 2,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 8,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 9,
+          "mathematical": 0,
+          "legacy": 0,
+          "bounded": 0
+        },
+        {
+          "total": 0,
+          "offset": 0,
+          "count": 0,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 4294967295,
+          "offset": 4294967295,
+          "count": 1,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        }
+      ]
+    },
+    {
+      "optimization": "O2",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117",
+      "size_bytes": 2048,
+      "boolean_inputs": 256,
+      "legacy_boolean_disagreements": 254,
+      "canonical_boolean_errors": 0,
+      "range_inputs": 21728,
+      "legacy_range_false_accepts": 6855,
+      "legacy_range_false_rejects": 0,
+      "bounded_range_errors": 0,
+      "examples": [
+        {
+          "total": 16,
+          "offset": 4294967295,
+          "count": 2,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 8,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 16,
+          "offset": 8,
+          "count": 9,
+          "mathematical": 0,
+          "legacy": 0,
+          "bounded": 0
+        },
+        {
+          "total": 0,
+          "offset": 0,
+          "count": 0,
+          "mathematical": 1,
+          "legacy": 1,
+          "bounded": 1
+        },
+        {
+          "total": 4294967295,
+          "offset": 4294967295,
+          "count": 1,
+          "mathematical": 0,
+          "legacy": 1,
+          "bounded": 0
+        }
+      ]
+    }
+  ],
+  "ghidra": {
+    "O0": {
+      "functions": 4,
+      "matches_original_json": true,
+      "binary_sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d"
+    },
+    "O2": {
+      "functions": 4,
+      "matches_original_json": true,
+      "binary_sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117"
+    }
+  },
+  "source_hash_checks_passed": 5,
+  "limits": [
+    "Not a third-party vulnerability finding.",
+    "Every byte value is exhausted; the uint32 triple space is sampled.",
+    "Recorded cross-file hash equality is not source authentication or a signed attestation.",
+    "No external targets, remote credentials, or live services are used."
+  ]
+}
