@@ -1,4 +1,6 @@
-# Binary Boundary
+# Cutline
+
+Previously published as Binary Boundary. The repository name and presentation changed; fixture paths, recorded source inputs, and their byte hashes retain their original identity.
 
 Four C functions, two compiler builds, and the difference between a recovered type and a source contract.
 

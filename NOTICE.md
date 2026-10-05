@@ -1,6 +1,6 @@
 # Source attribution
 
-Binary Boundary was created for Sergio Rodriguez's portfolio. The controlled C fixture, Ghidra export script, native regression script, browser instrument, and documentation are original project work. This standalone package preserves the recorded source inputs from the September 2026 experiment.
+Cutline, originally published as Binary Boundary, was created for Sergio Rodriguez's portfolio. The controlled C fixture, Ghidra export script, native regression script, browser instrument, and documentation are original project work. This standalone package preserves the recorded source inputs from the September 2026 experiment.
 
 Ghidra, Clang/LLVM, Python, and the JDK are external tools. Their implementations are not included in this repository. Decompiled listings and instruction records were generated from the original fixture using those tools; they are not decompilation of a third-party program.
 

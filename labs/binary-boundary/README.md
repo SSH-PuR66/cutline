@@ -1,4 +1,4 @@
-# Binary Boundary
+# Cutline
 
 An original controlled reverse-engineering study linking native execution, Ghidra output and a browser instrument. Four exported functions contrast permissive/canonical Boolean decoding and wrapping/bounded unsigned range checks. The code has no input/output, imported functions, entry point or unsafe memory operations. It is not an exploit or a third-party vulnerability finding.
 
