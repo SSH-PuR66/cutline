@@ -1,4 +1,4 @@
-# Cutline
+# Faultline / recorded structure desk
 
 An original controlled reverse-engineering study linking native execution, Ghidra output and a browser instrument. Four exported functions contrast permissive/canonical Boolean decoding and wrapping/bounded unsigned range checks. The code has no input/output, imported functions, entry point or unsafe memory operations. It is not an exploit or a third-party vulnerability finding.
 
@@ -39,3 +39,38 @@ Serve the repository over HTTP and open `labs/binary-boundary/`. The page uses o
 - [Ghidra headless analyzer documentation](https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.3_build/Ghidra/RuntimeScripts/support/analyzeHeadlessREADME.md)
 - [Clang Users Manual](https://clang.llvm.org/docs/UsersManual.html)
 - [Microsoft x64 calling convention](https://learn.microsoft.com/en-us/cpp/build/x64-calling-convention)
+
+## Structural comparison and address selection
+
+The 21 October 2026 browser upgrade derives these dimensions directly from the two unchanged Ghidra JSON exports:
+
+| Function | O0 instructions / blocks / edges | O2 instructions / blocks / edges |
+|---|---|---|
+| `legacy_boolean` | 9 / 1 / 0 | 4 / 1 / 0 |
+| `canonical_boolean` | 14 / 4 / 4 | 5 / 1 / 0 |
+| `legacy_range` | 12 / 1 / 0 | 5 / 1 / 0 |
+| `bounded_range` | 20 / 3 / 3 | 7 / 1 / 0 |
+
+The desk shows entry addresses and the full O0/O2 binary SHA-256 identities beside the comparison. A valid zero edge count means the recorded block has no outgoing destination. A missing count, malformed block, unknown edge destination, overlapping instruction range, or inconsistent identity prevents the desk from displaying results. Four JSON fetches are limited to 1 MiB each with a ten-second timeout. Analyzer, program and target identities must agree before rendering.
+
+Block selection is keyed by build, function and address. Only that block's recorded instruction addresses are highlighted. Tab enters the graph; arrows move focus; Home/End jump to the first/last block; Enter or Space selects; Escape or Clear block clears. Switching build or function clears selection even when both builds reuse the same entry address. The edge selector lists only the selected block's recorded destinations.
+
+Motion is off initially. Explicit opt-in illustrates one selected recorded edge; the segmented red signal follows that edge's editorial curve. It is not a live execution trace, path prediction, or claim that a branch was taken. Pause, block/edge/function/build changes, reduced-motion changes and page exit stop it. Offscreen and hidden-page states suspend it. A return from page exit requires fresh opt-in. The separate worm artwork is an illustration, never an assembly backdrop or execution record.
+
+Original implementation; conceptual references: [Ghidra](https://github.com/NationalSecurityAgency/ghidra/blob/master/README.md) and [Recurse](https://github.com/Recurse-Labs/recurse/blob/master/README.md). No upstream implementation or visual assets were copied. Original fixture sources and recorded native/Ghidra reports retain their prior bytes.
+
+### Verification
+
+From the repository root:
+
+```powershell
+node --test labs/binary-boundary/test-evidence-model.mjs
+python -B verify_records.py
+python -m http.server 8891 --bind 127.0.0.1
+# In another terminal, with Playwright available to Node and Edge installed:
+node labs/binary-boundary/check-structure-browser.cjs
+```
+
+The recorded run passed **41 model tests**, including malformed/missing evidence, exact block-to-instruction ownership, reused addresses across builds, keyboard index boundaries and all motion gate combinations. Browser checks passed **8 build/function views**, **13 blocks** each selected by click, Enter and Space, **11 lifecycle/selection checks**, **4 widths** (320, 390, 768 and 1440 pixels), and **5 rejected evidence cases**. There were **0 page errors** and **0 external requests**. The hidden-property visibility test dispatches a simulated event; offscreen and reduced-motion checks use the browser's actual viewport and preference mechanisms. These are finite UI and consistency checks, not new native execution.
+
+[Recorded browser checks and source hashes](structure-browser-check.json). Fresh screenshots and the latest run report are written to ignored `dist/recorded-structure/`. The original verifier still passes all five protected source hashes, both binary identities and all eight function records.

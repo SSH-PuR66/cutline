@@ -4,13 +4,17 @@
 
 [Watch the overflow mechanism in Attack Atlas](https://sergrdz.pages.dev/labs/attack-atlas/#faultline) · [Read the C fixture](labs/binary-boundary/fixture.c) · [Inspect native results](labs/binary-boundary/native-tests.json)
 
-[![Faultline: fractured copper and silicon strata reveal the break in a range boundary.](assets/faultline-plate.png)](https://sergrdz.pages.dev/labs/binary-boundary/carryglass/)
+[![Faultline: a segmented computer worm of smoked glass memory blocks carries a crimson signal along its spine.](assets/faultline-worm.png)](https://sergrdz.pages.dev/labs/binary-boundary/)
 
 Original project artwork generated for Sergio Rodriguez; illustration, not execution evidence.
 
 Previously published as Cutline. Repository URLs and fixture paths remain stable.
 
 **New native experiment: [Carryglass](carryglass/README.md)** — three seeded streams, boundary and metamorphic checks, bounded counterexample reduction, strict replay validation, and a recorded evidence browser. [Open the instrument](carryglass/index.html) · [Inspect the run](carryglass/evidence/report.json).
+
+**Recorded structure desk:** compare O0/O2 instruction, block and edge counts against their binary identities; select a basic block to isolate its actual assembly addresses. Keyboard navigation and opt-in edge illustrations use the same recorded graph. [Open the desk](https://sergrdz.pages.dev/labs/binary-boundary/) · [Verification record](labs/binary-boundary/structure-browser-check.json).
+
+**[Parserglass](parserglass/README.md):** ten bounded synthetic ELF specimens compare a strict section-completeness policy with a pinned pyelftools parser. Original corpus, observer and recorded outcomes; upstream authorship stays with its contributors.
 
 ### Reverse engineering a range check that accepts the impossible
 

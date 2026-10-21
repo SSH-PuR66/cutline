@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "project": "Parserglass",
+  "author": "Sergio Rodriguez",
+  "upstream": "https://github.com/eliben/pyelftools",
+  "revision": "5a04389392e25d8128e1acb59828a0a85be791b1",
+  "python": "3.14.5",
+  "source_hashes": {
+    "elftools/elf/elffile.py": "166f0ebfbded97bc67c6bd823da6c71bfd9b928882df13429869bbc7a6b64303",
+    "elftools/elf/sections.py": "52743cdbb037806ad5a65c77c18fcd6dec6666b6d2d47ab3e32d518616ce261b",
+    "SECURITY.md": "b56f1dbbda782889c06612ec041de99c39cf753c7ec9fbad4c80711dc4322c30"
+  },
+  "probe_sha256": "b959a3579b2e3090d30e7e4bd3e08a1f05b95880b8ac7193b83f160e5886b977",
+  "limits": {
+    "input_bytes": 8192,
+    "logical_output_bytes": 4096,
+    "read_size": 16384,
+    "read_calls": 128,
+    "case_seconds": 5
+  },
+  "scope": "Synthetic local parser observations; strict reference policy is not an upstream contract. No novelty or exploitability claim.",
+  "cases": [
+    {
+      "id": "plain-valid",
+      "input_bytes": 419,
+      "input_sha256": "3a20470dc6137c27a016256acd3dd99b9aa19dafcfdca55d0eb3a11f9c57bc0d",
+      "reference": {
+        "accepted": true,
+        "bytes": 144,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 144,
+        "reported_bytes": 144,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce",
+        "read_calls": 49
+      }
+    },
+    {
+      "id": "plain-short-storage",
+      "input_bytes": 419,
+      "input_sha256": "9ab14e01d980f229eaab4ec1d4bc5f82e3b170902386fb396eab3fc95134e704",
+      "reference": {
+        "accepted": false,
+        "reason": "section-storage-bound"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 144,
+        "reported_bytes": 148,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce",
+        "read_calls": 49
+      }
+    },
+    {
+      "id": "zlib-valid",
+      "input_bytes": 346,
+      "input_sha256": "ba10be204d6af13af23f4498945f5e4164a95a8e06d96e3cd6b3e54d4269fdde",
+      "reference": {
+        "accepted": true,
+        "bytes": 144,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 144,
+        "reported_bytes": 144,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "zlib-missing-checksum",
+      "input_bytes": 342,
+      "input_sha256": "99489c729163949f9a2bc727b424ac7db2ac2d933e7a8c5d1c282e0891ed7290",
+      "reference": {
+        "accepted": false,
+        "reason": "zlib-stream-incomplete"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 144,
+        "reported_bytes": 144,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "zlib-trailing-data",
+      "input_bytes": 350,
+      "input_sha256": "ccec863ad2a66139b2693517065fa40e129bd7887df3723d27dc48bbac4d8b34",
+      "reference": {
+        "accepted": false,
+        "reason": "zlib-extra-data"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 144,
+        "reported_bytes": 144,
+        "sha256": "1db5eca0946574ab0fb1fd46595de6056e91fa8c085caa335e22f1eacf6942ce",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "zlib-short-declaration",
+      "input_bytes": 346,
+      "input_sha256": "a67c1e6c3ef5e72533412eeade47d01d1a8793943706fe5bbe77c0e60b18dc88",
+      "reference": {
+        "accepted": false,
+        "reason": "logical-size-mismatch"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 143,
+        "reported_bytes": 143,
+        "sha256": "f5b9c485a3f90e30ed1b4ebced20348f798149edd4e2096aea3f5e50f3dfaf94",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "zlib-long-declaration",
+      "input_bytes": 346,
+      "input_sha256": "f46aeb9a2c55b9c9428da59bde82b5e63353a58172faf4ab64e015b7df22bd20",
+      "reference": {
+        "accepted": false,
+        "reason": "logical-size-mismatch"
+      },
+      "observed": {
+        "accepted": false,
+        "error_type": "ELFCompressionError",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "zlib-invalid-header",
+      "input_bytes": 346,
+      "input_sha256": "2a2a8a93c291efcd10a662572d40afe71005f617a01ab51850ac164e9be45b84",
+      "reference": {
+        "accepted": false,
+        "reason": "error"
+      },
+      "observed": {
+        "accepted": false,
+        "error_type": "error",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "zlib-empty-valid",
+      "input_bytes": 307,
+      "input_sha256": "921f87dd10c3802aaff2c5b933a0114cde650c122b39040e366613e2f2cc7e33",
+      "reference": {
+        "accepted": true,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "observed": {
+        "accepted": true,
+        "bytes": 0,
+        "reported_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "read_calls": 53
+      }
+    },
+    {
+      "id": "section-table-truncated",
+      "input_bytes": 240,
+      "input_sha256": "ce3194e4b06cece7a1033966cf85dc51265c7dd1acb5a5248ea068ee9d6da7ca",
+      "reference": {
+        "accepted": false,
+        "reason": "table-or-input-bound"
+      },
+      "observed": {
+        "accepted": false,
+        "error_type": "ELFParseError",
+        "read_calls": 36
+      }
+    }
+  ]
+}
