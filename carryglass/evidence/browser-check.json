@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "case": 0,
+      "sum": "0x100000001",
+      "low": "0x00000001",
+      "native": "legacy_range\t1\t1\nbounded_range\t0\t0",
+      "oracle": "0"
+    },
+    {
+      "case": 1,
+      "sum": "0x000000010",
+      "low": "0x00000010",
+      "native": "legacy_range\t1\t1\nbounded_range\t1\t1",
+      "oracle": "1"
+    },
+    {
+      "case": 2,
+      "sum": "0x000000011",
+      "low": "0x00000011",
+      "native": "legacy_range\t0\t0\nbounded_range\t0\t0",
+      "oracle": "0"
+    },
+    {
+      "case": 3,
+      "sum": "0x000000000",
+      "low": "0x00000000",
+      "native": "legacy_range\t1\t1\nbounded_range\t1\t1",
+      "oracle": "1"
+    },
+    {
+      "case": 4,
+      "sum": "0x0FFFFFFFF",
+      "low": "0xFFFFFFFF",
+      "native": "legacy_range\t1\t1\nbounded_range\t1\t1",
+      "oracle": "1"
+    },
+    {
+      "case": 5,
+      "sum": "0x100000000",
+      "low": "0x00000000",
+      "native": "legacy_range\t1\t1\nbounded_range\t0\t0",
+      "oracle": "0"
+    }
+  ],
+  "widths": [
+    {
+      "viewport": 1440,
+      "client": 1440,
+      "scroll": 1440
+    },
+    {
+      "viewport": 390,
+      "client": 390,
+      "scroll": 390
+    },
+    {
+      "viewport": 320,
+      "client": 320,
+      "scroll": 320
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "http://127.0.0.1:8891/carryglass/",
+    "http://127.0.0.1:8891/carryglass/carryglass.css",
+    "http://127.0.0.1:8891/carryglass/carryglass.js",
+    "http://127.0.0.1:8891/carryglass/evidence/report.json"
+  ],
+  "traceControls": true,
+  "reducedMotion": true,
+  "replayLoaded": true,
+  "malformedRejected": "Not loaded: Unsupported replay schema.",
+  "passed": true
+}

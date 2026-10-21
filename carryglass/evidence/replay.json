@@ -1,0 +1,15 @@
+{
+  "schema": "carryglass.replay.v1",
+  "function": "legacy_range",
+  "input": {
+    "total": 0,
+    "offset": 4294967294,
+    "count": 2
+  },
+  "expected": 0,
+  "recorded": {
+    "O0": 1,
+    "O2": 1
+  },
+  "fixture_sha256": "46fffc6d27929a4f0ef55412a3a8639467a28d3c01647c67096c3fcf8069aba9"
+}

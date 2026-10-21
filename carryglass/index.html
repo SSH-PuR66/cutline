@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Carryglass — inspect native arithmetic witnesses, their disappearing carry bit, and their exact reproduction records.">
+  <meta name="author" content="Sergio Rodriguez">
+  <title>Carryglass / Faultline</title>
+  <link rel="stylesheet" href="carryglass.css">
+  <script type="module" src="carryglass.js"></script>
+</head>
+<body>
+  <a class="skip" href="#instrument">Skip to the instrument</a>
+  <header><a href="../">FAULTLINE</a><span>SERGIO RODRIGUEZ / STUDY 02</span><a href="README.md">REPRODUCE ↗</a></header>
+  <main>
+    <section class="masthead">
+      <p class="eyebrow">CARRYGLASS / NATIVE ARITHMETIC RECORDS</p>
+      <h1>The 33rd bit<span>leaves the room.</span></h1>
+      <p class="intro">A 32-bit addition keeps the low word. The range check sees what remains. Follow one recorded input through both versions of the same four-function fixture.</p>
+    </section>
+    <section id="instrument" aria-labelledby="instrument-title">
+      <div class="instrument-top"><h2 id="instrument-title">Witness table</h2><p id="record-status" role="status">Loading the recorded run…</p></div>
+      <div class="desk">
+        <aside class="controls">
+          <label for="case">RECORDED INPUT</label><select id="case" disabled><option>Loading…</option></select>
+          <dl class="inputs" id="inputs"><div><dt>total</dt><dd>—</dd></div><div><dt>offset</dt><dd>—</dd></div><div><dt>count</dt><dd>—</dd></div></dl>
+          <div class="buttons"><button id="play" disabled>Run trace</button><button id="step" disabled>Step</button></div>
+          <p class="small" id="trace-phase" aria-live="polite">01 / operands</p>
+          <label class="file-label" for="replay-file">Load a replay JSON <span>↑</span></label><input id="replay-file" type="file" accept="application/json,.json">
+          <p class="small" id="import-status" role="status">16 KiB maximum. Values remain in this tab.</p>
+          <a class="small" href="evidence/replay.json" download>Download the reduced witness ↓</a>
+        </aside>
+        <div class="glass" data-phase="0">
+          <div class="glass-top"><span>UNSIGNED ADDITION / 32 BITS</span><span id="sum-state">WAITING</span></div>
+          <div class="carry-scene" aria-hidden="true">
+            <div class="eyeline"><div class="eye"><i></i></div><div class="eye"><i></i></div></div>
+            <div class="rail"><div class="carry-cell" id="carry-cell">0<span>CARRY</span></div><div class="word" id="word"></div></div>
+            <div class="glass-rule"></div><div class="discarded">OUTSIDE THE WORD</div><div class="retained">VISIBLE TO THE COMPARISON</div>
+          </div>
+          <div class="hex-readouts"><div><span>MATHEMATICAL SUM</span><output id="sum">—</output></div><div><span>LOW 32 BITS</span><output id="low">—</output></div></div>
+          <p id="mechanism">Recorded native calls and the arithmetic trace will appear here.</p>
+        </div>
+        <div class="verdicts">
+          <h3>Native returns</h3><p class="small" id="record-origin">From the checked-in native run.</p>
+          <table><caption class="sr-only">Recorded native verdicts</caption><thead><tr><th>Function</th><th>O0</th><th>O2</th></tr></thead><tbody id="native"></tbody></table>
+          <div class="oracle"><span>INTEGER ORACLE</span><strong id="oracle">—</strong></div>
+          <p class="small" id="verdict-explain">—</p>
+          <details><summary>The source condition</summary><pre><code>/* legacy */
+return offset + count &lt;= total;
+
+/* bounded */
+return offset &lt;= total &amp;&amp;
+       count &lt;= total - offset;</code></pre><a class="small" href="../labs/binary-boundary/fixture.c">Read the unchanged C fixture ↗</a></details>
+        </div>
+      </div>
+    </section>
+    <section class="record" aria-labelledby="record-title">
+      <div><p class="eyebrow">THE NATIVE RUN</p><h2 id="record-title">A witness needs a receipt.</h2><p id="sample-summary">Loading sample counts…</p><p class="small">The browser illustrates arithmetic. Native returns below were captured by the Python runner from freshly rebuilt local DLLs.</p></div>
+      <div class="receipt"><dl id="receipt"></dl><details><summary>Compiler, source and binary identity</summary><pre id="identity">Loading…</pre></details><nav><a href="evidence/report.json">Full run JSON ↗</a><a href="runner.py">Native runner ↗</a><a href="test_runner.py">Runner tests ↗</a></nav></div>
+    </section>
+    <footer>Original arithmetic fixtures by Sergio Rodriguez. Sampled range domain; exhausted byte domain. <a href="../NOTICE.md">Provenance</a></footer>
+  </main>
+</body>
+</html>
