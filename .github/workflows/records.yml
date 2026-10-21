@@ -1,0 +1,23 @@
+name: Recorded evidence and portable models
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - run: python -B verify_records.py
+      - run: node --test labs/binary-boundary/test-evidence-model.mjs
+      - run: python -B -m unittest discover -s carryglass -p 'test_*.py' -v
+      - run: python -B -m unittest discover -s parserglass -p 'test_*.py' -v
