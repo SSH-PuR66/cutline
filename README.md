@@ -1,5 +1,11 @@
 # Faultline
 
+**Created and maintained by [Sergio Rodriguez (SSH-PuR66)](https://github.com/SSH-PuR66).**
+
+[Watch the overflow mechanism in Attack Atlas](https://sergrdz.pages.dev/labs/attack-atlas/#faultline) · [Read the C fixture](labs/binary-boundary/fixture.c) · [Inspect native results](labs/binary-boundary/native-tests.json)
+
+![Faultline: an original etched integer ring crossing a fractured range boundary.](https://sergrdz.pages.dev/images/faultline-plate.png)
+
 Previously published as Cutline. Repository URLs and fixture paths remain stable.
 ### Reverse engineering a range check that accepts the impossible
 
