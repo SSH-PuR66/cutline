@@ -1,0 +1,345 @@
+{
+  "schema": "carryglass.report.v1",
+  "recorded_at": "2026-10-21T19:31:21.387152+00:00",
+  "passed": true,
+  "python": "3.14.0 (main, Nov 19 2025, 22:43:52) [MSC v.1944 64 bit (AMD64)]",
+  "compiler": "clang version 22.1.8 (https://github.com/llvm/llvm-project ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)\nTarget: aarch64-pc-windows-msvc\nThread model: posix\nInstalledDir: C:\\Program Files\\LLVM\\bin",
+  "flags": [
+    "--target=x86_64-pc-windows-msvc",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-fno-stack-protector",
+    "-shared",
+    "-nostdlib",
+    "-fuse-ld=lld",
+    "-Wl,/noentry",
+    "-Wl,/timestamp:0",
+    "-Wl,/Brepro",
+    "-Wl,/nodefaultlib"
+  ],
+  "source_sha256": {
+    "fixture.c": "46fffc6d27929a4f0ef55412a3a8639467a28d3c01647c67096c3fcf8069aba9",
+    "build-fixture.ps1": "4c1f58e50a3f5e9c13bf8275220931934cd71bdd8ed5b74d16a0f4957514e058",
+    "analyze-fixture.ps1": "f3dcc0ac024f6c7149b592bd3e9c0d1191fb2e54160055763ed79aa18dde9c78",
+    "ExportBoundary.java": "38190fb0a37f6560c4bcf92d30c600b26869f6d4087deaa34fbb5c679008e416",
+    "test_fixture.py": "3364664e07cc4a96375bcf4d9dc187e51da5a3f8bb288fac728e80a7b49d6696"
+  },
+  "seeds": [
+    20261021,
+    12648430,
+    24301
+  ],
+  "samples_per_seed": 4096,
+  "harness_sha256": {
+    "runner.py": "33328f826a0553eb052a333fe4f7c27afa1418c39ff88201f08a2af929874866",
+    "test_runner.py": "af122a2ec28699556ebc54dbe42cd8bdff81f82d76b8583eefc080e849f2423c"
+  },
+  "boundary_values": [
+    0,
+    1,
+    2,
+    3,
+    7,
+    8,
+    15,
+    16,
+    31,
+    255,
+    256,
+    65535,
+    65536,
+    2147483647,
+    2147483648,
+    4294967294,
+    4294967295
+  ],
+  "builds": [
+    {
+      "optimization": "O0",
+      "boolean_inputs": 256,
+      "legacy_boolean_disagreements": 254,
+      "canonical_boolean_errors": 0,
+      "range_inputs": 17201,
+      "legacy_false_accepts": 4570,
+      "legacy_false_rejects": 0,
+      "bounded_errors": 0,
+      "metamorphic_native_calls": 61530,
+      "metamorphic_errors": 0,
+      "groups": [
+        {
+          "name": "boundary Cartesian product",
+          "inputs": 4913,
+          "legacy_false_accepts": 559
+        },
+        {
+          "name": "seed 20261021",
+          "inputs": 4096,
+          "legacy_false_accepts": 1359
+        },
+        {
+          "name": "seed 12648430",
+          "inputs": 4096,
+          "legacy_false_accepts": 1335
+        },
+        {
+          "name": "seed 24301",
+          "inputs": 4096,
+          "legacy_false_accepts": 1317
+        }
+      ],
+      "reduction": {
+        "input": [
+          0,
+          4294967294,
+          2
+        ],
+        "calls": 16,
+        "candidate_1_minimal": true,
+        "termination": "candidate fixed point",
+        "moves": [
+          [
+            16,
+            4294967295,
+            2
+          ],
+          [
+            1,
+            4294967295,
+            2
+          ],
+          [
+            1,
+            4294967294,
+            2
+          ],
+          [
+            0,
+            4294967294,
+            2
+          ]
+        ]
+      },
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d"
+    },
+    {
+      "optimization": "O2",
+      "boolean_inputs": 256,
+      "legacy_boolean_disagreements": 254,
+      "canonical_boolean_errors": 0,
+      "range_inputs": 17201,
+      "legacy_false_accepts": 4570,
+      "legacy_false_rejects": 0,
+      "bounded_errors": 0,
+      "metamorphic_native_calls": 61530,
+      "metamorphic_errors": 0,
+      "groups": [
+        {
+          "name": "boundary Cartesian product",
+          "inputs": 4913,
+          "legacy_false_accepts": 559
+        },
+        {
+          "name": "seed 20261021",
+          "inputs": 4096,
+          "legacy_false_accepts": 1359
+        },
+        {
+          "name": "seed 12648430",
+          "inputs": 4096,
+          "legacy_false_accepts": 1335
+        },
+        {
+          "name": "seed 24301",
+          "inputs": 4096,
+          "legacy_false_accepts": 1317
+        }
+      ],
+      "reduction": {
+        "input": [
+          0,
+          4294967294,
+          2
+        ],
+        "calls": 16,
+        "candidate_1_minimal": true,
+        "termination": "candidate fixed point",
+        "moves": [
+          [
+            16,
+            4294967295,
+            2
+          ],
+          [
+            1,
+            4294967295,
+            2
+          ],
+          [
+            1,
+            4294967294,
+            2
+          ],
+          [
+            0,
+            4294967294,
+            2
+          ]
+        ]
+      },
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117"
+    }
+  ],
+  "optimization_disagreements": 0,
+  "optimization_comparisons": 34914,
+  "examples": [
+    {
+      "label": "carry escapes",
+      "input": {
+        "total": 16,
+        "offset": 4294967295,
+        "count": 2
+      },
+      "mathematical_sum": 4294967297,
+      "sum_hex": "0x100000001",
+      "low32_hex": "0x00000001",
+      "expected": 0,
+      "native": {
+        "O0": {
+          "legacy_range": 1,
+          "bounded_range": 0
+        },
+        "O2": {
+          "legacy_range": 1,
+          "bounded_range": 0
+        }
+      }
+    },
+    {
+      "label": "exact fit",
+      "input": {
+        "total": 16,
+        "offset": 8,
+        "count": 8
+      },
+      "mathematical_sum": 16,
+      "sum_hex": "0x000000010",
+      "low32_hex": "0x00000010",
+      "expected": 1,
+      "native": {
+        "O0": {
+          "legacy_range": 1,
+          "bounded_range": 1
+        },
+        "O2": {
+          "legacy_range": 1,
+          "bounded_range": 1
+        }
+      }
+    },
+    {
+      "label": "one past",
+      "input": {
+        "total": 16,
+        "offset": 8,
+        "count": 9
+      },
+      "mathematical_sum": 17,
+      "sum_hex": "0x000000011",
+      "low32_hex": "0x00000011",
+      "expected": 0,
+      "native": {
+        "O0": {
+          "legacy_range": 0,
+          "bounded_range": 0
+        },
+        "O2": {
+          "legacy_range": 0,
+          "bounded_range": 0
+        }
+      }
+    },
+    {
+      "label": "empty interval",
+      "input": {
+        "total": 0,
+        "offset": 0,
+        "count": 0
+      },
+      "mathematical_sum": 0,
+      "sum_hex": "0x000000000",
+      "low32_hex": "0x00000000",
+      "expected": 1,
+      "native": {
+        "O0": {
+          "legacy_range": 1,
+          "bounded_range": 1
+        },
+        "O2": {
+          "legacy_range": 1,
+          "bounded_range": 1
+        }
+      }
+    },
+    {
+      "label": "maximum endpoint",
+      "input": {
+        "total": 4294967295,
+        "offset": 4294967295,
+        "count": 0
+      },
+      "mathematical_sum": 4294967295,
+      "sum_hex": "0x0FFFFFFFF",
+      "low32_hex": "0xFFFFFFFF",
+      "expected": 1,
+      "native": {
+        "O0": {
+          "legacy_range": 1,
+          "bounded_range": 1
+        },
+        "O2": {
+          "legacy_range": 1,
+          "bounded_range": 1
+        }
+      }
+    },
+    {
+      "label": "reduced witness",
+      "input": {
+        "total": 0,
+        "offset": 4294967294,
+        "count": 2
+      },
+      "mathematical_sum": 4294967296,
+      "sum_hex": "0x100000000",
+      "low32_hex": "0x00000000",
+      "expected": 0,
+      "native": {
+        "O0": {
+          "legacy_range": 1,
+          "bounded_range": 0
+        },
+        "O2": {
+          "legacy_range": 1,
+          "bounded_range": 0
+        }
+      }
+    }
+  ],
+  "reducer": {
+    "budget": 2048,
+    "operators": "one coordinate to 0, 1, floor(x/2), x-1, or x&(x-1), strictly smaller",
+    "guarantee": "No listed single-coordinate candidate preserves failure at the recorded fixed point; not globally minimal."
+  },
+  "limits": [
+    "Original inert arithmetic fixtures; no third-party vulnerability established.",
+    "All 256 byte inputs tested; uint32 triples sampled, not exhausted.",
+    "Recorded native runs are separate from the browser arithmetic model.",
+    "Hashes identify these local artifacts, not a signed attestation."
+  ]
+}

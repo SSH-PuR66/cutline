@@ -1,0 +1,3 @@
+# Evidence hashes describe exact bytes on every checkout platform.
+*.py -text
+*.json -text

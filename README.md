@@ -4,9 +4,14 @@
 
 [Watch the overflow mechanism in Attack Atlas](https://sergrdz.pages.dev/labs/attack-atlas/#faultline) · [Read the C fixture](labs/binary-boundary/fixture.c) · [Inspect native results](labs/binary-boundary/native-tests.json)
 
-![Faultline: an original etched integer ring crossing a fractured range boundary.](https://sergrdz.pages.dev/images/faultline-plate.png)
+[![Faultline: fractured copper and silicon strata reveal the break in a range boundary.](assets/faultline-plate.png)](https://sergrdz.pages.dev/labs/binary-boundary/carryglass/)
+
+Original project artwork generated for Sergio Rodriguez; illustration, not execution evidence.
 
 Previously published as Cutline. Repository URLs and fixture paths remain stable.
+
+**New native experiment: [Carryglass](carryglass/README.md)** — three seeded streams, boundary and metamorphic checks, bounded counterexample reduction, strict replay validation, and a recorded evidence browser. [Open the instrument](carryglass/index.html) · [Inspect the run](carryglass/evidence/report.json).
+
 ### Reverse engineering a range check that accepts the impossible
 
 `total=16, offset=4294967295, count=2` passes a legacy uint32 range check. Addition wraps to 1 before the comparison. The corrected function rejects the input before adding.
