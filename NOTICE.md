@@ -13,3 +13,9 @@ Primary tool references:
 
 The source directory supplied for this package did not contain a license grant. Copyright 2026 Sergio Rodriguez. No additional license is granted by this notice.
 
+## Recorded structure desk, 21 October 2026
+
+The original address-selection and structural-comparison implementation takes design inspiration from [Ghidra's disassembly, decompilation and graph views](https://github.com/NationalSecurityAgency/ghidra/blob/master/README.md) and [Recurse's address navigation and binary-analysis interface](https://github.com/Recurse-Labs/recurse/blob/master/README.md). No upstream code, interface assets or artwork were copied. This browser does not embed either product or run a disassembler; it displays the existing fixture's recorded Ghidra exports.
+
+The new worm image is original artwork generated for Sergio Rodriguez. See [the artwork record](assets/faultline-worm-artwork.md). It illustrates the project and is not execution evidence.
+

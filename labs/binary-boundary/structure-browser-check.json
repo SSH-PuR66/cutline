@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-21T20:12:03.961Z",
+  "browser": "155.0.4283.62",
+  "node": "v24.16.0",
+  "structures": [
+    {
+      "build": "O0",
+      "function": "legacy_boolean",
+      "instructions": 9,
+      "blocks": 1,
+      "edges": 0,
+      "entry": "180001000",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d"
+    },
+    {
+      "build": "O0",
+      "function": "canonical_boolean",
+      "instructions": 14,
+      "blocks": 4,
+      "edges": 4,
+      "entry": "180001020",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d"
+    },
+    {
+      "build": "O0",
+      "function": "legacy_range",
+      "instructions": 12,
+      "blocks": 1,
+      "edges": 0,
+      "entry": "180001050",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d"
+    },
+    {
+      "build": "O0",
+      "function": "bounded_range",
+      "instructions": 20,
+      "blocks": 3,
+      "edges": 3,
+      "entry": "180001080",
+      "sha256": "bae4800a36c7ea488be36ea2232e37cc1431a9e7cbb6fe0238d32cd345bd750d"
+    },
+    {
+      "build": "O2",
+      "function": "legacy_boolean",
+      "instructions": 4,
+      "blocks": 1,
+      "edges": 0,
+      "entry": "180001000",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117"
+    },
+    {
+      "build": "O2",
+      "function": "canonical_boolean",
+      "instructions": 5,
+      "blocks": 1,
+      "edges": 0,
+      "entry": "180001010",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117"
+    },
+    {
+      "build": "O2",
+      "function": "legacy_range",
+      "instructions": 5,
+      "blocks": 1,
+      "edges": 0,
+      "entry": "180001020",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117"
+    },
+    {
+      "build": "O2",
+      "function": "bounded_range",
+      "instructions": 7,
+      "blocks": 1,
+      "edges": 0,
+      "entry": "180001030",
+      "sha256": "27b3d6256af582636d29f0bc424d0c9c4eaea95e8643ad55d5cb052e2de34117"
+    }
+  ],
+  "selection_checks": [
+    {
+      "build": "O0",
+      "function": "legacy_boolean",
+      "block": "180001000",
+      "addresses": [
+        "180001000",
+        "180001001",
+        "180001005",
+        "18000100a",
+        "18000100d",
+        "180001010",
+        "180001012",
+        "180001015",
+        "180001016"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O0",
+      "function": "canonical_boolean",
+      "block": "180001020",
+      "addresses": [
+        "180001020",
+        "180001021",
+        "180001025",
+        "18000102a",
+        "18000102d"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 2
+    },
+    {
+      "build": "O0",
+      "function": "canonical_boolean",
+      "block": "18000102f",
+      "addresses": [
+        "18000102f",
+        "180001034",
+        "180001037"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 1
+    },
+    {
+      "build": "O0",
+      "function": "canonical_boolean",
+      "block": "180001039",
+      "addresses": [
+        "180001039",
+        "18000103e",
+        "180001041"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 1
+    },
+    {
+      "build": "O0",
+      "function": "canonical_boolean",
+      "block": "180001043",
+      "addresses": [
+        "180001043",
+        "180001046",
+        "180001047"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O0",
+      "function": "legacy_range",
+      "block": "180001050",
+      "addresses": [
+        "180001050",
+        "180001054",
+        "180001059",
+        "18000105d",
+        "180001061",
+        "180001065",
+        "180001069",
+        "18000106d",
+        "180001070",
+        "180001072",
+        "180001075",
+        "180001079"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O0",
+      "function": "bounded_range",
+      "block": "180001080",
+      "addresses": [
+        "180001080",
+        "180001084",
+        "180001089",
+        "18000108d",
+        "180001091",
+        "180001095",
+        "180001097",
+        "18000109b",
+        "18000109f"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 2
+    },
+    {
+      "build": "O0",
+      "function": "bounded_range",
+      "block": "1800010a1",
+      "addresses": [
+        "1800010a1",
+        "1800010a5",
+        "1800010a9",
+        "1800010ad",
+        "1800010af",
+        "1800010b2"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 1
+    },
+    {
+      "build": "O0",
+      "function": "bounded_range",
+      "block": "1800010b6",
+      "addresses": [
+        "1800010b6",
+        "1800010ba",
+        "1800010bc",
+        "1800010bf",
+        "1800010c3"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O2",
+      "function": "legacy_boolean",
+      "block": "180001000",
+      "addresses": [
+        "180001000",
+        "180001002",
+        "180001004",
+        "180001007"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O2",
+      "function": "canonical_boolean",
+      "block": "180001010",
+      "addresses": [
+        "180001010",
+        "180001013",
+        "180001016",
+        "18000101b",
+        "18000101e"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O2",
+      "function": "legacy_range",
+      "block": "180001020",
+      "addresses": [
+        "180001020",
+        "180001023",
+        "180001025",
+        "180001027",
+        "18000102a"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    },
+    {
+      "build": "O2",
+      "function": "bounded_range",
+      "block": "180001030",
+      "addresses": [
+        "180001030",
+        "180001032",
+        "180001035",
+        "180001038",
+        "18000103b",
+        "18000103d",
+        "180001040"
+      ],
+      "click": true,
+      "enter": true,
+      "space": true,
+      "escape": true,
+      "arrows": true,
+      "home_end": true,
+      "edges": 0
+    }
+  ],
+  "lifecycle": [
+    "same-address build switch resets selection",
+    "only selected recorded edge animates after opt-in",
+    "pause stops animation",
+    "offscreen suspend and visible resume",
+    "visibilitychange handler suspends (simulated hidden property)",
+    "reduced-motion change stops and revokes opt-in",
+    "pagehide stops; pageshow requires fresh opt-in",
+    "edge switch revokes opt-in",
+    "function switch resets selection and motion",
+    "terminal block cannot animate an invented edge",
+    "clear selection disables trace"
+  ],
+  "widths": [
+    {
+      "width": 320,
+      "page_overflow": false
+    },
+    {
+      "width": 390,
+      "page_overflow": false
+    },
+    {
+      "width": 768,
+      "page_overflow": false
+    },
+    {
+      "width": 1440,
+      "page_overflow": false
+    }
+  ],
+  "rejections": [
+    {
+      "case": "missing report",
+      "status": "rejected",
+      "message": "Report unavailable (404)"
+    },
+    {
+      "case": "malformed JSON",
+      "status": "rejected",
+      "message": "Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+    },
+    {
+      "case": "binary identity mismatch",
+      "status": "rejected",
+      "message": "O2: binary identities disagree"
+    },
+    {
+      "case": "missing instruction count",
+      "status": "rejected",
+      "message": "O2/legacy_boolean: invalid instruction count"
+    },
+    {
+      "case": "oversized report",
+      "status": "rejected",
+      "message": "Recorded JSON exceeds the 1 MiB limit"
+    }
+  ],
+  "source_sha256": {
+    "evidence-model.js": "1d2734c0470da2469361d2c4e8d9a2d4745bb88e6609d766771078175e55e936",
+    "desk.js": "bd064347cecec7299f581a6d1c005858795c13e88232d9d7e815e3a2bc960dd6",
+    "desk.css": "62816df90d01b91a77cd189b009fb3a56c539044cb93f5a08cf50d238dea6c3a",
+    "index.html": "09b4e6b859c1853d84041b7833c8911e3fd37a606ed3fb8f708bb8e726275d5c",
+    "test-evidence-model.mjs": "65a5ec062e9ca35d895a5b108f1ece65909288c4cfb3b465dd2b62f181de1a48",
+    "check-structure-browser.cjs": "6445c689d48e5f663f70eab84be2da969ad7170a8aa606676b26be88dc6426e0",
+    "analysis-O0.json": "8c631e90867ca834a3f0200ffae420d53e14974ef26447818b69572b1a74d8aa",
+    "analysis-O2.json": "08f1b5a2a2cb9d76382d1aa82403a60af06d65787751787c5188d0c9a9dee1a3",
+    "native-tests.json": "ff053d03055b5a59fa314966b3897457f05fe301f457f3ea18aa00be349cdc3b",
+    "provenance.json": "19efca4a9fdaad8fcb71c4d7d631b858e72250ffd2222c7be0a10c878d3ad442",
+    "../../assets/faultline-worm.png": "c6f1f225b32a87248e374df275d6e40245a68b0ac0c3efce8bd723d0a7dd0076"
+  },
+  "page_errors": [],
+  "external_requests": []
+}
