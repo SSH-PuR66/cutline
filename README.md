@@ -1,12 +1,13 @@
 # Cutline
+### Reverse engineering a range check that accepts the impossible
 
-Previously published as Binary Boundary. The repository name and presentation changed; fixture paths, recorded source inputs, and their byte hashes retain their original identity.
+`total=16, offset=4294967295, count=2` passes a legacy uint32 range check. Addition wraps to 1 before the comparison. The corrected function rejects the input before adding.
 
-Four C functions, two compiler builds, and the difference between a recovered type and a source contract.
+I wrote four C functions, built them at O0 and O2, recovered their control flow with Ghidra, and compared native execution with an independent integer reference. The instrument puts source, decompiled C, instruction bytes, and counterexamples on the same desk.
 
-I wrote small Boolean decoders and unsigned range checks, compiled them at O0 and O2, recovered their control flow with Ghidra, and called the native functions against an independent integer reference. The browser desk keeps source, decompilation, instruction bytes, and counterexamples together.
+[Open the instrument](https://sergrdz.pages.dev/labs/binary-boundary/) · [Source fixture](labs/binary-boundary/fixture.c) · [Recorded native results](labs/binary-boundary/native-tests.json) · [Full method](labs/binary-boundary/README.md)
 
-[Open the published instrument](https://sergrdz.pages.dev/labs/binary-boundary/) · [Read the experiment](labs/binary-boundary/README.md)
+**Research type:** original controlled experiment. **Stack:** C, Clang, Ghidra, Python. **Question:** which assumptions survive compilation and recovery?
 
 ## Observed results
 
@@ -51,4 +52,5 @@ For the browser desk, run `python -m http.server 8787 --bind 127.0.0.1` from thi
 - `index.html`, `desk.css`, `desk.js`, `model.js`: standalone browser instrument.
 
 The nested layout preserves the original scripts and their byte hashes. The package adapts only browser navigation and documentation for a standalone checkout. See [NOTICE.md](NOTICE.md) for source attribution and rights. No third-party binaries or libraries are bundled.
+
 
