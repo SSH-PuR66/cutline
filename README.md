@@ -1,4 +1,6 @@
-# Cutline
+# Faultline
+
+Previously published as Cutline. Repository URLs and fixture paths remain stable.
 ### Reverse engineering a range check that accepts the impossible
 
 `total=16, offset=4294967295, count=2` passes a legacy uint32 range check. Addition wraps to 1 before the comparison. The corrected function rejects the input before adding.
@@ -52,5 +54,3 @@ For the browser desk, run `python -m http.server 8787 --bind 127.0.0.1` from thi
 - `index.html`, `desk.css`, `desk.js`, `model.js`: standalone browser instrument.
 
 The nested layout preserves the original scripts and their byte hashes. The package adapts only browser navigation and documentation for a standalone checkout. See [NOTICE.md](NOTICE.md) for source attribution and rights. No third-party binaries or libraries are bundled.
-
-
