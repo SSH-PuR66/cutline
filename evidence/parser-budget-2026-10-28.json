@@ -1,0 +1,31 @@
+{
+  "schema": "faultline-parser-budget/v1",
+  "scope": "Local JSON reader input-contract regression; no native execution or resource-exhaustion claim.",
+  "baseline": {
+    "baseline_commit": "a7ac40200bc664e3d2c27d6a8a98828c2323b188",
+    "source_sha256": "2d07792123c3aa0833b4f79b4e955a7d6883c1ff75b807912c9df88113f2c48d",
+    "tests": 14,
+    "failures": [
+      "test_verify_records.DecoderBudgetTests.test_broad_unused_array_is_rejected",
+      "test_verify_records.DecoderBudgetTests.test_depth_is_rejected_before_decoder_execution",
+      "test_verify_records.DecoderBudgetTests.test_integer_token_digit_budget",
+      "test_verify_records.DecoderBudgetTests.test_large_unused_object_is_rejected",
+      "test_verify_records.DecoderBudgetTests.test_multibyte_text_uses_utf8_budget",
+      "test_verify_records.DecoderBudgetTests.test_negative_overflowed_float",
+      "test_verify_records.DecoderBudgetTests.test_overflowed_float_in_unused_metadata",
+      "test_verify_records.DecoderBudgetTests.test_total_node_budget_across_small_containers",
+      "test_verify_records.DecoderBudgetTests.test_unpaired_high_surrogate_in_unused_value",
+      "test_verify_records.DecoderBudgetTests.test_unpaired_low_surrogate_in_object_key"
+    ],
+    "errors": []
+  },
+  "current": {
+    "tests": 14,
+    "failures": [],
+    "errors": [],
+    "source_sha256": {
+      "verify_records.py": "d12010447a0c1a6483dfa6bde1d48532cb8b4ce81e9c47ca5546a519a4597b59",
+      "test_verify_records.py": "0fdcfa68cebf79a89c29badd71ef25266e8cffce2cbc1d46522800be35bbd4b5"
+    }
+  }
+}

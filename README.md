@@ -72,6 +72,14 @@ python -B -m unittest discover -s carryglass -p test_runner.py
 
 The [CI workflow](.github/workflows/records.yml) runs record checks on Python 3.12 and 3.14. This update strengthens inspection of saved evidence; it does not rerun Clang/Ghidra, decode instruction bytes, prove that text matches machine code, authenticate the publisher, or turn a self-consistent record into proof of execution. The original fixture, binary records and provenance remain unchanged.
 
+### Bound the decoder before reading evidence
+
+Fourteen additional [decoder regressions](test_verify_records.py) test the whole JSON document, including metadata that the record verifier does not otherwise use. Ten rejection expectations failed against the prior reader; all fourteen now pass, alongside the original 24 saved-record checks. The [before/after record](evidence/parser-budget-2026-10-28.json) names the tested prior commit and source hashes. These are local input-contract defects, not a demonstrated remote exploit or a measured memory-exhaustion attack.
+
+The reader now rejects structural nesting beyond 24 container levels before calling `json.loads`. After decoding, it enforces 50,000 total nodes, 8,192 members per container, and 262,144 UTF-8 bytes per text value. Integer tokens have at most 20 digits; float tokens have at most 64 characters and must remain finite. Escaped unpaired surrogates are rejected in keys and values. The existing 2,000,000-byte file cap still bounds input reads. Finite floating metadata, uint64 seed tokens, valid surrogate pairs and delimiters inside strings are retained as positive controls; typed evidence fields still apply their stricter existing checks.
+
+Original native and Ghidra records remain unchanged and pass the strengthened reader with five source hashes, two binary identities, eight functions and 76 instructions. Parsing consistency does not authenticate those records or execute their contents.
+
 ## Contents and provenance
 
 - `labs/binary-boundary/fixture.c`: original four-function source.

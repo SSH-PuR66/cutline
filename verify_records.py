@@ -1,6 +1,7 @@
 """Check published-record consistency. Does not replace the native experiment."""
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import sys
@@ -10,12 +11,65 @@ LAB = ROOT / "labs" / "binary-boundary"
 EXPECTED = {"legacy_boolean", "canonical_boolean", "legacy_range", "bounded_range"}
 SOURCES = {"fixture.c", "build-fixture.ps1", "analyze-fixture.ps1", "ExportBoundary.java", "test_fixture.py"}
 MAX_RECORD_BYTES = 2_000_000
+MAX_JSON_DEPTH = 24
+MAX_JSON_NODES = 50_000
+MAX_JSON_ITEMS = 8192
+MAX_JSON_TEXT_BYTES = 262_144
 U32_MAX = (1 << 32) - 1
 
 
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def bound_json_depth(raw):
+    """Bound structural recursion before handing any containers to the decoder.
+
+    This is a depth preflight, not another JSON parser. Quoted delimiters and
+    escaped quotes are ignored; the standard decoder still validates grammar.
+    """
+    depth = 0
+    quoted = escaped = False
+    for byte in raw:
+        if quoted:
+            if escaped:
+                escaped = False
+            elif byte == 92:
+                escaped = True
+            elif byte == 34:
+                quoted = False
+        elif byte == 34:
+            quoted = True
+        elif byte in (91, 123):
+            depth += 1
+            require(depth <= MAX_JSON_DEPTH, "Record exceeds JSON depth limit")
+        elif byte in (93, 125):
+            depth -= 1
+            require(depth >= 0, "Unbalanced JSON containers")
+
+
+def bound_json_tree(value):
+    """Check even unused metadata; a later consumer may retain the entire tree."""
+    stack = [value]
+    nodes = 0
+    while stack:
+        item = stack.pop()
+        nodes += 1
+        require(nodes <= MAX_JSON_NODES, "Record exceeds JSON node limit")
+        if type(item) is str:
+            try:
+                size = len(item.encode("utf-8"))
+            except UnicodeError as exc:
+                raise ValueError("Invalid Unicode in record") from exc
+            require(size <= MAX_JSON_TEXT_BYTES, "Record text exceeds UTF-8 limit")
+        elif type(item) in (list, dict):
+            require(len(item) <= MAX_JSON_ITEMS, "Record container exceeds item limit")
+            if type(item) is dict:
+                stack.extend(item.keys())
+                stack.extend(item.values())
+            else:
+                stack.extend(item)
 
 
 def strict_json(path):
@@ -29,13 +83,27 @@ def strict_json(path):
     def constant(_):
         raise ValueError("Non-finite JSON number")
 
+    def parse_integer(token):
+        require(len(token.lstrip("-")) <= 20, "Integer token exceeds digit limit")
+        return int(token)
+
+    def parse_float(token):
+        require(len(token) <= 64, "Float token exceeds size limit")
+        number = float(token)
+        require(math.isfinite(number), "Non-finite JSON number")
+        return number
+
     with Path(path).open("rb") as stream:
         raw = stream.read(MAX_RECORD_BYTES + 1)
     require(len(raw) <= MAX_RECORD_BYTES, "Record exceeds size limit")
+    bound_json_depth(raw)
     try:
-        value = json.loads(raw.decode("utf-8"), object_pairs_hook=pairs, parse_constant=constant)
+        value = json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
+                           parse_constant=constant, parse_int=parse_integer,
+                           parse_float=parse_float)
     except (UnicodeError, RecursionError, json.JSONDecodeError) as exc:
         raise ValueError("Malformed record JSON") from exc
+    bound_json_tree(value)
     require(type(value) is dict, "Record must be an object")
     require(type(value.get("schema_version")) is int and value["schema_version"] == 1,
             "Unsupported record schema")

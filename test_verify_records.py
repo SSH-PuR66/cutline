@@ -4,6 +4,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import verify_records as verifier
 
@@ -125,6 +126,68 @@ class RecordIntegrityTests(unittest.TestCase):
     def test_duplicate_boundary_input(self):
         self.mutate("native-tests.json", lambda x: x["boundary_values"].__setitem__(1, 0))
         self.rejected()
+
+
+class DecoderBudgetTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.path = Path(self.temp.name) / "record.json"
+
+    def read(self, raw):
+        self.path.write_text(raw, encoding="utf-8")
+        return verifier.strict_json(self.path)
+
+    def rejected(self, raw):
+        with self.assertRaises(ValueError):
+            self.read(raw)
+
+    def test_overflowed_float_in_unused_metadata(self):
+        self.rejected('{"schema_version":1,"metadata":1e9999}')
+
+    def test_negative_overflowed_float(self):
+        self.rejected('{"schema_version":1,"metadata":-1e9999}')
+
+    def test_unpaired_high_surrogate_in_unused_value(self):
+        self.rejected('{"schema_version":1,"metadata":"\\ud800"}')
+
+    def test_unpaired_low_surrogate_in_object_key(self):
+        self.rejected('{"schema_version":1,"\\udfff":"metadata"}')
+
+    def test_valid_surrogate_pair_and_escaped_delimiters(self):
+        value = self.read('{"schema_version":1,"metadata":"\\ud83c\\udf33 [ { \\""}')
+        self.assertIn("\U0001f333", value["metadata"])
+
+    def test_finite_float_metadata_is_retained(self):
+        self.assertEqual(self.read('{"schema_version":1,"metadata":1.25e2}')["metadata"], 125.0)
+
+    def test_depth_is_rejected_before_decoder_execution(self):
+        raw = '{"schema_version":1,"metadata":' + '[' * 25 + '0' + ']' * 25 + '}'
+        with patch.object(verifier.json, "loads", side_effect=AssertionError("Decoder must not run")):
+            self.rejected(raw)
+
+    def test_string_delimiters_do_not_count_toward_depth(self):
+        value = self.read(json.dumps({"schema_version": 1, "metadata": "[{}]" * 100}))
+        self.assertEqual(len(value["metadata"]), 400)
+
+    def test_broad_unused_array_is_rejected(self):
+        self.rejected(json.dumps({"schema_version": 1, "metadata": [0] * 8193}))
+
+    def test_large_unused_object_is_rejected(self):
+        self.rejected(json.dumps({"schema_version": 1, "metadata": {str(i): 0 for i in range(8193)}}))
+
+    def test_total_node_budget_across_small_containers(self):
+        self.rejected(json.dumps({"schema_version": 1, "metadata": [[0] * 1000 for _ in range(51)]}))
+
+    def test_multibyte_text_uses_utf8_budget(self):
+        self.rejected(json.dumps({"schema_version": 1, "metadata": "\u20ac" * 90000}, ensure_ascii=False))
+
+    def test_integer_token_digit_budget(self):
+        self.rejected('{"schema_version":1,"metadata":' + '9' * 200 + '}')
+
+    def test_uint64_seed_token_is_supported(self):
+        value = self.read('{"schema_version":1,"metadata":18446744073709551615}')
+        self.assertEqual(value["metadata"], (1 << 64) - 1)
 
 
 if __name__ == "__main__":
