@@ -58,6 +58,20 @@ For the browser desk, run `python -m http.server 8787 --bind 127.0.0.1` from thi
 
 `python -B verify_records.py` also runs on platforms without the native toolchain. It checks the five recorded source hashes, exact named functions, instruction counts, control-flow destinations, and agreement between the recorded binary hashes. Passing it establishes record consistency only.
 
+### Attack the evidence reader — 28 October 2026
+
+The saved-record verifier now applies a fixed five-file source allowlist, bounded reads and duplicate-key rejection before following the records. Deleting the source map no longer silently removes the source checks. It validates the exact O0/O2 build set, program identities, sizes, corpus arithmetic and example results, then checks unique block starts, contiguous instruction addresses, x64 instruction-byte lengths, disjoint instruction ranges and graph destinations.
+
+The [24 adversarial record tests](test_verify_records.py) preserve the original evidence and corrupt isolated temporary copies. They cover duplicate members, Boolean-as-integer fields, oversized/deep/malformed JSON, an empty source map, path replacement, changed sources, duplicate builds/functions/blocks, wrong binary identities, address gaps, dangling edges, impossible counts and false arithmetic witnesses. The unmodified original records pass with **5 source hashes, 2 binary identities, 8 functions and 76 instruction records**. The existing 19 portable Carryglass tests also pass.
+
+```sh
+python -B -m unittest -v test_verify_records
+python -B verify_records.py
+python -B -m unittest discover -s carryglass -p test_runner.py
+```
+
+The [CI workflow](.github/workflows/records.yml) runs record checks on Python 3.12 and 3.14. This update strengthens inspection of saved evidence; it does not rerun Clang/Ghidra, decode instruction bytes, prove that text matches machine code, authenticate the publisher, or turn a self-consistent record into proof of execution. The original fixture, binary records and provenance remain unchanged.
+
 ## Contents and provenance
 
 - `labs/binary-boundary/fixture.c`: original four-function source.
